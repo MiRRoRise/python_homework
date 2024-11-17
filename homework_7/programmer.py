@@ -55,7 +55,7 @@ class Programmer:
         elif self.__position == "Middle":
             self.__salary += time * 15
         elif self.__position == "Senior":
-            self.__salary += time * (20 + self.__up)
+            self.__salary += time * (20 + self.__up) # Учитываем возможное "повышение" Senior
         self.__data_work.append(f"{self.__name} проработал {time} часов")
 
     def bonus(self, amount):
@@ -80,7 +80,7 @@ class Programmer:
              self.__position = "Senior"
              self.__data_work.append(f"{self.__name} повысился до {self.__position}")
         elif self.__position == "Senior":
-            self.__up += 1
+            self.__up += 1 # Оклад Senior увеличивается при "повышении"
             self.__data_work.append(f"{self.__name} получил надбавку")
 
     def info(self):
@@ -92,6 +92,7 @@ class Programmer:
 
         money = self.__salary
         self.__salary = 0
+        self.__data_work.append(f"{self.__name} получил зарплату в размере {money}")
         return money
 
     def stat(self):
