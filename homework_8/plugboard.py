@@ -1,7 +1,7 @@
 def create_pairs(input_pairs):
     pairs = []
     for pair in input_pairs.split():
-        a, b = pair
+        a, b = pair[0], pair[1]
         pairs.append((a, b))
     return pairs
 
