@@ -36,18 +36,19 @@ def start_enigma(rotor_input, reflector_input, rotor_pos, plugboard_input, text_
             raise ValueError("Текст для шифрования должен состоять только из заглавных символов кириллицы и пробелов")
 
         for i in range(len(rotor_input)):
-            rotors.append(Rotor(rotor_input[i], 'A', rotor_pos[i]))
+            rotors.append(Rotor(rotor_input[i], rotor_pos[i]))
         reflector = Reflector(reflector_input)
         plugboard = Plugboard(plugboard_input)
-
         enigma_machine = EnigmaMachine(rotors, reflector, plugboard)
         res = enigma_machine.process(text_input)
+
         print(f"Зашифрованный текст: {res}")
     except Exception as e:
         print(f"Ошибка: {e}")
 
 def main():
         if len(sys.argv) > 1 and len(sys.argv) != 5:
+            print(sys.argv)
             print("Введите данные в формате: python main.py положение_роторов соединительная_панель текст_для_шифрования путь_к_конфигурации")
         elif len(sys.argv) == 5:
             rotor_pos = sys.argv[1]
@@ -60,7 +61,7 @@ def main():
         else:
             print("Для работы с машиной необходимо ввести некоторые данные")
             rotor_pos = input("Введите начальное положение роторов: ")
-            plugboard = input("Введите настройки соединительной панели: ")
+            plugboard = input("Введите настройки соединительной панели (через пробел, например: БГ ДЖ): ")
             text = input("Введите текст для шифрования: ")
             path = input("Введите путь файлу с конфигурацией: ")
 
